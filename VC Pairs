@@ -1,0 +1,70 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+class TestClass {
+	static class FastReader {
+		BufferedReader br;
+		StringTokenizer st;
+		
+		public FastReader(){
+			br = new BufferedReader(new InputStreamReader(System.in));
+			st = null;
+		}
+		
+		String next(){
+			while (st == null || !st.hasMoreElements()){
+				st = new StringTokenizer(nextLine());
+	        } 
+	        return st.nextToken();
+		}
+		
+		int nextInt(){ 
+	        return Integer.parseInt(next()); 
+	    }
+		
+		long nextLong(){ 
+	        return Long.parseLong(next()); 
+	    }
+		
+		double nextDouble() { 
+	        return Double.parseDouble(next()); 
+	    }
+		
+		String nextLine() { 
+	        String str = ""; 
+	        try{ 
+	            str = br.readLine(); 
+	        } 
+	        catch (IOException e){ 
+	            e.printStackTrace(); 
+	        } 
+	        return str; 
+	    }
+	}
+	
+	public static void main(String args[] ) throws Exception {
+		FastReader fr = new FastReader();
+		int T = fr.nextInt();
+		while(T-- > 0){
+			int N = fr.nextInt();
+			String SS = fr.nextLine();
+			boolean isCount = false;
+			int count = 0;
+			for(int i=0;i<N;i++){
+				char ch = SS.charAt(i);
+				if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'){
+					if(isCount){
+						count++;
+					}
+					isCount = false;
+				}
+				else{
+					isCount = true;
+				}
+			}
+			System.out.println(count);
+		}
+    }
+}
